@@ -10,10 +10,12 @@ member2 = Member.new({'first_name' => 'Tanny', 'last_name' => 'Qureshi', 'member
 member2.save()
 gymclass1 = GymClass.new({'name' => 'Yoga', 'description' => 'Bend it like Beckham'})
 gymclass1.save()
+gymclass2 = GymClass.new({'name' => 'Bodybuilding 101', 'description' => 'Lift with me if you wanna live!'})
+gymclass2.save()
 
-instructor1 = Instructor.new({'first_name' => 'Arnold', 'last_name' => 'Schwarzenegger', 'profile' => 'The man. The myth. The legend.'})
+instructor1 = Instructor.new({'first_name' => 'Arnold', 'last_name' => 'Schwarzenegger', 'profile' => "The man. The myth. The legend."})
 instructor1.save()
-instructor2 = Instructor.new({'first_name' => 'Samir', 'last_name' => 'Nagheenanajar', 'profile' => "No one in this country can pronounce my name right. It's not that hard! Naghee - nanajar. Nagheenanajar."})
+instructor2 = Instructor.new({'first_name' => 'Bikram', 'last_name' => 'Choudhury', 'profile' => "Founder of Bikram Yoga"})
 instructor2.save()
 
 binding.pry
