@@ -7,8 +7,7 @@ DROP TABLE IF EXISTS members;
 CREATE TABLE members (
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(255),
-  last_name VARCHAR(255),
-  join_date DATE
+  last_name VARCHAR(255)
 );
 
 CREATE TABLE instructors (
