@@ -1,0 +1,9 @@
+<h1>Members</h1>
+<ul>
+<% @members.each do |member|%>
+  <li><%= member.first_name %></li>
+  <li><%= member.last_name %></li>
+  <li><%= member.membership_type %></li>
+</ul>
+<hr>
+<% end %>
