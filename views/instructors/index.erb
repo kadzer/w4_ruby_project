@@ -1,0 +1,10 @@
+<h1>List of gym instructors</h1>
+<h2><a href="/new/instructor">Create new</a></h2>
+<hr>
+<ul>
+<% @instructors.each do |instructor|%>
+<li><%= instructor.full_name %> [<a href="/instructors/<%= instructor.id %>">view/edit</a>]</li>
+<li><%= instructor.profile %></li>
+</ul>
+<hr>
+<% end %>
