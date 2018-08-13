@@ -1,0 +1,20 @@
+<h1>Add a new gym member</h1>
+<form action="/new/member" method="post">
+  <table>
+    <tr>
+      <td>First name: </td>
+      <td><input id="first_name" type="text" name="first_name" value="" required></td>
+    </tr>
+    <tr>
+      <td>Last name: </td>
+      <td><input id="last_name" type="text" name="last_name" value="" required></td>
+    </tr>
+    <tr>
+      <td>Membership type: </td>
+      <td><select id="membership_type" name="membership_type" required><option value ="basic">basic</option><option value ="premium">premium</option></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Create"></td>
+    </tr>
+  </table>
+</form>

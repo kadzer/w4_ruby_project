@@ -1,1 +1,23 @@
-<h1>Members</h1>
+<h1><%= @member.full_name %></h1>
+<form onsubmit="return confirm('Are you sure you wish to delete this member?')" action="/members/<%= @member.id %>/delete" method="post">
+  <td><input type="submit" value="Delete"></td>
+</form>
+<form action="/members/<%= @member.id %>/update" method="post">
+  <table>
+    <tr>
+      <td>First name: </td>
+      <td><input id="first_name" type="text" name="first_name" value="<%= @member.first_name%>" required></td>
+    </tr>
+    <tr>
+      <td>Last name: </td>
+      <td><input id="last_name" type="text" name="last_name" value="<%= @member.last_name%>" required></td>
+    </tr>
+    <tr>
+      <td>Membership type: </td>
+      <td><select id="membership_type" name="membership_type" required><option value ="basic">basic</option><option value ="premium">premium</option></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Update"></td>
+    </tr>
+  </table>
+</form>

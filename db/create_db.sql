@@ -27,8 +27,8 @@ CREATE TABLE classes (
 CREATE TABLE sessions (
   id SERIAL PRIMARY KEY,
   session_time TIME,
-  gym_class_id INT REFERENCES classes(id),
-  instructor_id INT REFERENCES instructors(id),
-  member_id INT REFERENCES members(id),
+  gym_class_id INT REFERENCES classes(id) ON DELETE CASCADE,
+  instructor_id INT REFERENCES instructors(id) ON DELETE CASCADE,
+  member_id INT REFERENCES members(id) ON DELETE CASCADE,
   capacity INT
 );
