@@ -4,9 +4,11 @@ require_relative('../models/booking.rb')
 require_relative('../models/member.rb')
 require_relative('../models/gymclass.rb')
 
-get '/bookings' do
-  @bookings = Booking.all()
-  erb(:"bookings/index")
+get '/bookings/:id/signup' do
+  @booking = Booking.find_by_id(params['id'].to_i)
+  @gymclasses = GymClass.all()
+  @members = Member.all()
+  erb(:"bookings/signup")
 end
 
 get '/bookings/:id' do
@@ -14,6 +16,11 @@ get '/bookings/:id' do
   @gymclasses = GymClass.all()
   @members = Member.all()
   erb(:"bookings/view")
+end
+
+get '/bookings' do
+  @bookings = Booking.all()
+  erb(:"bookings/index")
 end
 
 get '/new/booking' do

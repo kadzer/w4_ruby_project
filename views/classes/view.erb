@@ -17,6 +17,10 @@
       <td><textarea name="description" rows="10" cols="30" value="<%= @gymclass.description%>" required><%= @gymclass.description%></textarea></td>
     </tr>
     <tr>
+      <td>Capacity</td>
+      <td><input id="capacity" type="text" name="capacity" value="<%= @gymclass.capacity%>" required></td>
+    </tr>
+    <tr>
       <td><input type="submit" value="Update"></td>
     </tr>
   </table>

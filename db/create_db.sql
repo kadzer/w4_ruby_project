@@ -14,13 +14,13 @@ CREATE TABLE classes (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   instructor VARCHAR (255),
-  description VARCHAR(255)
+  description VARCHAR(255),
+  capacity INT
 );
 
 CREATE TABLE bookings (
   id SERIAL PRIMARY KEY,
   start_time TIME,
   gym_class_id INT REFERENCES classes(id) ON DELETE CASCADE,
-  member_id INT REFERENCES members(id) ON DELETE CASCADE,
-  capacity INT
+  member_id INT REFERENCES members(id) ON DELETE CASCADE
 );

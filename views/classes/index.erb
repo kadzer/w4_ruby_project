@@ -3,8 +3,9 @@
 <hr>
 <% @gymclass.each do |gymclass|%>
 <ul>
-<li><%= gymclass.name %> [<a href="/classes/<%= gymclass.id %>">view/edit</a>]</li>
-<li><%= gymclass.description %></li>
+<li>Class name: <%= gymclass.name %> [<a href="/classes/<%= gymclass.id %>">view/edit</a>]</li>
+<li>Description: <%= gymclass.description %></li>
+<li>Capacity: <%= gymclass.capacity %></li>
 </ul>
 <hr>
 <% end %>

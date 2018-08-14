@@ -1,4 +1,4 @@
-<h1><%= @booking.return_class['name']%> with <%= @booking.return_class['instructor'] %> at <%= @booking.start_time %></h1>
+<h1><%= @booking.return_class['name']%> with <%= @booking.return_class['instructor'] %> at <%= @booking.nice_time %></h1>
 <form onsubmit="return confirm('Are you sure you wish to delete this booking?')" action="/bookings/<%= @booking.id %>/delete" method="post">
   <td><input type="submit" value="Delete"></td>
 </form>
@@ -17,10 +17,6 @@
           <% end %>
         </select>
       </td>
-    </tr>
-    <tr>
-      <td>Capacity: </td>
-      <td><input id="capacity" type="text" name="capacity" value="<%= @booking.capacity%>" required></td>
     </tr>
     <tr>
       <td>Members: </td>

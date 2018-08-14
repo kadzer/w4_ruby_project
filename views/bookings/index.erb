@@ -5,7 +5,7 @@
 <ul>
 <li><%= booking.nice_time %> [<a href="/bookings/<%= booking.id %>">view/edit</a>]</li>
 <li>Class: <%= booking.return_class['name']%></li>
-<li>Signed up: <%= Booking.count_enrolled_members(booking.id) %> of <%= booking.capacity %></li>
+<li>Enrolled members: <%= Booking.count_enrolled_members(booking.id) %>.  <a href="/bookings/<%=booking.id%>/signup">Add a member</a></li>
 </ul>
 <hr>
 <% end %>

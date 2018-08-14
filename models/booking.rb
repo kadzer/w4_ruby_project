@@ -3,28 +3,27 @@ require_relative('member.rb')
 
 class Booking
   attr_reader :id, :gym_class_id, :member_id
-  attr_accessor :start_time, :capacity
+  attr_accessor :start_time
 
   def initialize (options)
     @id = options['id'].to_i() if options['id']
     @start_time = options['start_time']
     @gym_class_id = options['gym_class_id']
     @member_id = options['member_id']
-    @capacity = options['capacity']
   end
 
   def save()
-    sql = "INSERT INTO bookings (start_time, gym_class_id, member_id, capacity)
-    VALUES ($1, $2, $3, $4) RETURNING id"
-    values = [@start_time, @gym_class_id, @member_id, @capacity]
+    sql = "INSERT INTO bookings (start_time, gym_class_id, member_id)
+    VALUES ($1, $2, $3) RETURNING id"
+    values = [@start_time, @gym_class_id, @member_id]
     booking = SqlRunner.run(sql, values).first
     @id = booking['id'].to_i()
   end
 
   def update()
-    sql = "UPDATE bookings SET (start_time, gym_class_id, member_id, capacity) = ($1, $2, $3, $4)
-    WHERE id = $5"
-    values = [@start_time, @gym_class_id, @member_id, @capacity, @id]
+    sql = "UPDATE bookings SET (start_time, gym_class_id, member_id) = ($1, $2, $3)
+    WHERE id = $4"
+    values = [@start_time, @gym_class_id, @member_id, @id]
     SqlRunner.run(sql, values)
   end
 
