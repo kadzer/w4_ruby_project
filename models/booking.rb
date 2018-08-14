@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('member.rb')
 
 class Booking
   attr_reader :id, :gym_class_id, :member_id
@@ -43,6 +44,28 @@ class Booking
     sql = "SELECT * FROM members WHERE id = $1"
     values = [@member_id]
     return SqlRunner.run(sql, values).first
+  end
+
+  def list_members()
+    sql = "SELECT members.* FROM members
+    INNER JOIN bookings ON members.id = bookings.member_id
+    WHERE bookings.id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    array = result.map{ |member| Member.new(member) }
+    return array.map { |member| member.full_name }
+  end
+
+def nice_time()
+  sql = "SELECT to_char(start_time, 'HH24:MI') FROM bookings WHERE id = $1"
+  values = [@id]
+  return SqlRunner.run(sql, values).first['to_char']
+end
+
+  def self.count_enrolled_members(id)
+    sql = "SELECT COUNT(*) FROM bookings WHERE member_id = $1"
+    values = [id]
+    return SqlRunner.run(sql, values).first['count']
   end
 
   def self.find_by_id(id)

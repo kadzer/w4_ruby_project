@@ -1,10 +1,10 @@
 <h1>List of gym members</h1>
-<h2><a href="/new/member">Create new</a></h2>
+<h2><a href="/new/member">Add a new member</a></h2>
 <hr>
 <% @members.each do |member|%>
 <ul>
 <li><%= member.full_name %> [<a href="/members/<%= member.id %>">view/edit</a>]</li>
-<li><%= member.membership_type %></li>
+<li>Membership: <%= member.membership_type %></li>
 </ul>
 <hr>
 <% end %>

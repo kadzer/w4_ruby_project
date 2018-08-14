@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <td>Description: </td>
-      <td><input id="description" type="text" name="description" value="<%= @gymclass.description%>" required></td>
+      <td><textarea name="description" rows="10" cols="30" value="<%= @gymclass.description%>" required><%= @gymclass.description%></textarea></td>
     </tr>
     <tr>
       <td><input type="submit" value="Update"></td>

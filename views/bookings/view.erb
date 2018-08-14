@@ -6,7 +6,7 @@
   <table>
     <tr>
       <td>Start time: </td>
-      <td><input id="start_time" type="text" name="start_time" value="<%= @booking.start_time%>" required></td>
+      <td><input id="start_time" type="text" name="start_time" value="<%= @booking.nice_time %>" required></td>
     </tr>
     <tr>
       <td>Gym class type: </td>
@@ -21,6 +21,10 @@
     <tr>
       <td>Capacity: </td>
       <td><input id="capacity" type="text" name="capacity" value="<%= @booking.capacity%>" required></td>
+    </tr>
+    <tr>
+      <td>Members: </td>
+      <td><%= @booking.list_members %></td>
     </tr>
     <tr>
       <td><input type="submit" value="Update"></td>

@@ -12,6 +12,7 @@ end
 get '/bookings/:id' do
   @booking = Booking.find_by_id(params['id'].to_i)
   @gymclasses = GymClass.all()
+  @members = Member.all()
   erb(:"bookings/view")
 end
 
