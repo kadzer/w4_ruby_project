@@ -1,0 +1,17 @@
+<h1>Add a new class booking</h1>
+<form action="/new/booking" method="post">
+  <label for="gymclass-id">Select a gym class: </label>
+  <select id ="gym_class_id" name="gym_class_id">
+    <% @gymclasses.each do |gymclass| %>
+    <option value="<%= gymclass.id %>"><%= gymclass.name %></option>
+    <% end %>
+  </select>
+  <div class="control">
+        <label for="start-time">Choose start time:</label>
+        <input type="time" id="start-time" name="start_time"
+               min="9:00" max="18:00" required />
+        <span class="hours">Opening hours: 9AM to 6PM</span>
+    </div>
+  <input type="submit" value="Add">
+
+</form>

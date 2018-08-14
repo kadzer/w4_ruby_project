@@ -1,6 +1,9 @@
+.flex {
+  display: flex;
+}
 
 .flex--row {
-  flex-direction: column;
+  flex-direction: row;
 }
 
 ul{

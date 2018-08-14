@@ -1,8 +1,8 @@
 <h1>List of gym members</h1>
 <h2><a href="/new/member">Create new</a></h2>
 <hr>
-<ul>
 <% @members.each do |member|%>
+<ul>
 <li><%= member.full_name %> [<a href="/members/<%= member.id %>">view/edit</a>]</li>
 <li><%= member.membership_type %></li>
 </ul>
