@@ -1,12 +1,12 @@
 <h1>List of class bookings</h1>
-<h2><a href="/new/booking">Create new</a></h2>
+<h2><a href="/new/booking">Create a new booking</a></h2>
 <hr>
 <% @bookings.each do |booking|%>
 <ul>
 <li><%= booking.start_time%> [<a href="/bookings/<%= booking.id %>">view/edit</a>]</li>
 <li>Class: <%= booking.return_class['name']%></li>
 <li>List of members?</li>
-<li>capacity</li>
+<li>Capacity: <%= booking.capacity %></li>
 </ul>
 <hr>
 <% end %>
