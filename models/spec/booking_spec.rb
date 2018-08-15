@@ -1,6 +1,6 @@
 require('minitest/autorun')
 require('minitest/rg')
-require_relative('../models/booking')
+require_relative('../booking')
 
 class BookingTest < MiniTest::Test
 

@@ -1,0 +1,45 @@
+<h1>Add a new class booking</h1>
+<form action="/new/session" method="post">
+  <div class="label">
+    <label for="session_date">Choose a date</label>
+  </div>
+  <div class="value">
+    <input type="date" name="session_date" value="" required>
+  </div>
+  <div class="label">
+    <label for="start-time">Choose start time:</label>
+  </div>
+  <div class="label">
+    <input type="time" name="start_time" value="" required>
+  </div>
+  <div class="label">
+    <label for="duration">Duration in minutes (between 1-90):</label>
+  </div>
+  <div class="label">
+    <input type="number" name="duration" value="" min="1" max="90" required>
+  </div>
+  <div class="label">
+    <label for="gymclass-id">Select a gym class: </label>
+  </div>
+  <div class="value">
+    <select id ="gym_class_id" name="gym_class_id" required>
+      <% @gymclasses.each do |gymclass| %>
+      <option value="<%= gymclass.id %>"><%= gymclass.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="label">
+    <label for="instructor">Instructor</label>
+  </div>
+  <div class="value">
+    <input type="text" name="instructor" value="" required>
+  </div>
+  <div class="label">
+    <label for="location">Location</label>
+  </div>
+  <div class="value">
+    <input type="text" name="location" value="" required>
+  </div>
+<input type="submit" value="Add">
+
+</form>

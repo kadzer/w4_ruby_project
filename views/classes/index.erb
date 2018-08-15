@@ -1,11 +1,17 @@
 <h1>List of gym classes</h1>
 <h2><a href="/new/class">Add a new class</a></h2>
 <hr>
-<% @gymclass.each do |gymclass|%>
-<ul>
-<li>Class name: <%= gymclass.name %> [<a href="/classes/<%= gymclass.id %>">view/edit</a>]</li>
-<li>Description: <%= gymclass.description %></li>
-<li>Capacity: <%= gymclass.capacity %></li>
-</ul>
-<hr>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Class name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <% @gymclass.each do |gymclass|%>
+  <tr>
+    <td><a href="/classes/<%= gymclass.id %>"><%= gymclass.name %></a></td>
+    <td><%= gymclass.description %></td>
+  </tr>
+  <% end %>
+</table>

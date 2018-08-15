@@ -1,0 +1,45 @@
+<h1><%= @session.return_class['name']%> with <%= @session.instructor %> at <%= @session.nice_time %></h1>
+<form onsubmit="return confirm('Are you sure you wish to delete this session?')" action="/sessions/<%= @session.id %>/delete" method="post">
+  <td><input type="submit" value="Delete"></td>
+</form>
+<form action="/sessions/<%= @session.id %>/update" method="post">
+  <table>
+    <tr>
+      <td>Date</td>
+      <td><input id="session_date" type="date" name="session_date" value="<%= @session.session_date %>" required></td>
+    </tr>
+    <tr>
+      <td>Start time</td>
+      <td><input id="start_time" type="time" name="start_time" value="<%= @session.nice_time %>" required></td>
+    </tr>
+    <tr>
+      <td>Duration (minutes)</td>
+      <td><input id="duration" type="number" name="duration" value="<%= @session.duration %>" min="1" max="90" required></td>
+    </tr>
+    <tr>
+      <td>Gym class</td>
+      <td>
+        <select id ="gym_class_id" name="gym_class_id" required>
+          <% @gymclasses.each do |gymclass| %>
+          <option value="<%= gymclass.id %>"><%= gymclass.name %></option>
+          <% end %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Instructor</td>
+      <td><input id="instructor" type="text" name="instructor" value="<%= @session.instructor %>" required></td>
+    </tr>
+    <tr>
+      <td>Location</td>
+      <td><input id="location" type="text" name="location" value="<%= @session.location %>" required></td>
+    </tr>
+    <tr>
+      <td>Capacity</td>
+      <td><input id="capacity" type="number" name="capacity" value="<%= @session.capacity %>" min="1" max="30" required></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Update"></td>
+    </tr>
+  </table>
+</form>

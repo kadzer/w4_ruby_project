@@ -1,29 +1,26 @@
 require_relative('../db/sql_runner')
-require_relative('member.rb')
 
 class Booking
-  attr_reader :id, :gym_class_id, :member_id
-  attr_accessor :start_time
+  attr_reader :id, :session_id, :member_id
 
   def initialize (options)
     @id = options['id'].to_i() if options['id']
-    @start_time = options['start_time']
-    @gym_class_id = options['gym_class_id']
+    @session_id = options['session_id']
     @member_id = options['member_id']
   end
 
   def save()
-    sql = "INSERT INTO bookings (start_time, gym_class_id, member_id)
-    VALUES ($1, $2, $3) RETURNING id"
-    values = [@start_time, @gym_class_id, @member_id]
+    sql = "INSERT INTO bookings (session_id, member_id)
+    VALUES ($1, $2) RETURNING id"
+    values = [@session_id, @member_id]
     booking = SqlRunner.run(sql, values).first
     @id = booking['id'].to_i()
   end
 
   def update()
-    sql = "UPDATE bookings SET (start_time, gym_class_id, member_id) = ($1, $2, $3)
-    WHERE id = $4"
-    values = [@start_time, @gym_class_id, @member_id, @id]
+    sql = "UPDATE bookings SET (session_id, member_id) = ($1, $2)
+    WHERE id = $3"
+    values = [@session_id, @member_id, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -33,9 +30,9 @@ class Booking
     SqlRunner.run(sql, values)
   end
 
-  def return_class()
-    sql = "SELECT * FROM classes WHERE id = $1"
-    values = [@gym_class_id]
+  def return_session()
+    sql = "SELECT * FROM sessions WHERE id = $1"
+    values = [@session_id]
     return SqlRunner.run(sql, values).first
   end
 
@@ -44,28 +41,23 @@ class Booking
     values = [@member_id]
     return SqlRunner.run(sql, values).first
   end
+#rejig this one to return members per session
 
-  def list_members()
-    sql = "SELECT members.* FROM members
-    INNER JOIN bookings ON members.id = bookings.member_id
-    WHERE bookings.id = $1"
-    values = [@id]
-    result = SqlRunner.run(sql, values)
-    array = result.map{ |member| Member.new(member) }
-    return array.map { |member| member.full_name }
-  end
+  # def list_members()
+  #   sql = "SELECT members.* FROM members
+  #   INNER JOIN bookings ON members.id = bookings.member_id
+  #   WHERE bookings.id = $1"
+  #   values = [@id]
+  #   result = SqlRunner.run(sql, values)
+  #   array = result.map{ |member| Member.new(member) }
+  #   return array.map { |member| member.full_name }
+  # end
 
-def nice_time()
-  sql = "SELECT to_char(start_time, 'HH24:MI') FROM bookings WHERE id = $1"
-  values = [@id]
-  return SqlRunner.run(sql, values).first['to_char']
-end
-
-  def self.count_enrolled_members(id)
-    sql = "SELECT COUNT(*) FROM bookings WHERE member_id = $1"
-    values = [id]
-    return SqlRunner.run(sql, values).first['count']
-  end
+  # def self.count_enrolled_members(id)
+  #   sql = "SELECT COUNT(*) FROM bookings WHERE member_id = $1"
+  #   values = [id]
+  #   return SqlRunner.run(sql, values).first['count']
+  # end
 
   def self.find_by_id(id)
     sql = "SELECT * FROM bookings WHERE id = $1"

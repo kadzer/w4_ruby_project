@@ -1,0 +1,30 @@
+<h1>List of class sessions</h1>
+<h2><a href="/new/session">Add a new session</a></h2>
+<hr>
+<table>
+<% @sessions.each do |session|%>
+  <tr>
+    <td>Date</td>
+    <td><%= session.session_date %></td>
+  </tr>
+  <tr>
+    <td>Start time</td>
+    <td><a href="/sessions/<%=session.id%>"><%= session.nice_time %></a></td>
+  </tr>
+  <tr>
+    <td>Class</td>
+    <td><%= session.return_class['name'] %></td>
+  </tr>
+  <tr>
+    <td>Instructor</td>
+    <td><%= session.instructor %></td>
+  </tr>
+  <tr>
+    <td>Duration (min)</td>
+    <td><%= session.duration %></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+  </tr>
+<% end %>
+</table>
