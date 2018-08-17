@@ -41,23 +41,6 @@ class Booking
     values = [@member_id]
     return SqlRunner.run(sql, values).first
   end
-#rejig this one to return members per session
-
-  # def list_members()
-  #   sql = "SELECT members.* FROM members
-  #   INNER JOIN bookings ON members.id = bookings.member_id
-  #   WHERE bookings.id = $1"
-  #   values = [@id]
-  #   result = SqlRunner.run(sql, values)
-  #   array = result.map{ |member| Member.new(member) }
-  #   return array.map { |member| member.full_name }
-  # end
-
-  # def self.count_enrolled_members(id)
-  #   sql = "SELECT COUNT(*) FROM bookings WHERE member_id = $1"
-  #   values = [id]
-  #   return SqlRunner.run(sql, values).first['count']
-  # end
 
   def self.find_by_id(id)
     sql = "SELECT * FROM bookings WHERE id = $1"

@@ -24,6 +24,14 @@
     <td><%= session.duration %></td>
   </tr>
   <tr>
+    <td>Location</td>
+    <td><%= session.location %></td>
+  </tr>
+  <tr>
+    <td><a href="/sessions/<%=session.id%>/signup">Bookings</a></td>
+    <td><%= session.count_bookings%> of <%= session.capacity %></td>
+  </tr>
+  <tr>
     <td><hr></td>
   </tr>
 <% end %>

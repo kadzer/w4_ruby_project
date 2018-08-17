@@ -42,11 +42,24 @@ class Session
     return SqlRunner.run(sql, values).first
   end
 
-def nice_time()
-  sql = "SELECT to_char(start_time, 'HH24:MI') FROM sessions WHERE id = $1"
-  values = [@id]
-  return SqlRunner.run(sql, values).first['to_char']
-end
+  def nice_time()
+    sql = "SELECT to_char(start_time, 'HH24:MI') FROM sessions WHERE id = $1"
+    values = [@id]
+    return SqlRunner.run(sql, values).first['to_char']
+  end
+
+  def count_bookings()
+    sql = "SELECT COUNT (*) FROM bookings WHERE session_id = $1"
+    values = [@id]
+    return SqlRunner.run(sql, values).first['count']
+  end
+
+  def display_members()
+    sql = "SELECT members.* FROM members INNER JOIN bookings ON members.id = bookings.member_id WHERE bookings.session_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.map{ |member| Member.new(member) }
+  end
 
   def self.find_by_id(id)
     sql = "SELECT * FROM sessions WHERE id = $1"

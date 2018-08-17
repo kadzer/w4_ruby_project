@@ -1,1 +1,17 @@
-<h1>sign up here</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Booked for this session:</th>
+    </tr>
+  </thead>
+<% @session.display_members.each do |member|%>
+  <tr>
+    <td><%= member.full_name %></td>
+  </tr>
+<tr>
+<% end %>
+<form action="/sessions/:id/signup" method="post">
+  <td><input type="button" name="" value="Book member"></td>
+</form>
+</tr>
+</table>

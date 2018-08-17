@@ -45,5 +45,9 @@ end
 post '/sessions/:id/delete' do
   @session = Session.new(params)
   @session.delete()
-  redirect('/bookings')
+  redirect('/sessions')
+end
+
+post '/sessions/:id/signup' do
+  redirect('/sessions')
 end
